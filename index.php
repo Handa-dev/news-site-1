@@ -1,4 +1,6 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+
+?>
     <div id="main-content">
         <div class="container">
             <div class="row">
@@ -16,12 +18,11 @@
                        }
                        
                         $offset = ($page - 1) * $limit; 
+                         
+                       $sql = "SELECT post.post_id, post.title, post.description,post.post_date,post.author, category.category_name,user.username,post.category,post.post_img FROM post LEFT JOIN category ON post.category =category.category_id LEFT JOIN user ON post.author = user.user_id ORDER BY post.post_id DESC LIMIT 0,3";
                         
-                        $sql = "SELECT post.post_id, post.title, post.description,post.post_date,post.author, category.category_name,user.username,post.category,post.post_img,FROM post 
-                        LEFT JOIN  category ON post.category =category.category_id
-                        LEFT JOIN user ON post.author = user.user_id
-                        ORDER BY post.post_id DESC LIMIT {$offset},{$limit}";
-      
+                        //echo "<br>hi2";
+                       // exit;
                         $result = mysqli_query($conn,$sql) or die("query failed. "); //querry run use fun 
                         if(mysqli_num_rows($result) > 0 )
                         {
@@ -70,6 +71,7 @@
                          
                        
                          $sql1 = "SELECT * FROM post";//user tables say record fetch krke leker ane k liye
+                         
                          $result1 = mysqli_query($conn,$sql1) or die("query failed");
                        
                         if(mysqli_num_rows($result1) > 0)
