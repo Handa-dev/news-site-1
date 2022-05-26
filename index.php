@@ -27,7 +27,7 @@
                         {
                             while($row = mysqli_fetch_assoc($result))
                             {
-                           
+                                
                         
                         ?>
                         <div class="post-content">
