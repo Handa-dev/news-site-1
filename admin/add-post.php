@@ -20,7 +20,8 @@
                       <div class="form-group">
                           <label for="exampleInputPassword1">Category</label>
                           <select name="category" class="form-control">
-                              <option disabled> Select Category</option> <!--disabled use  to user not click on select category-->
+                              <option disabled> Select Category</option> 
+                              <!--disabled use  to user not click on select category-->
                           <?php
                             include "config.php";
                             $sql = "SELECT * FROM category";

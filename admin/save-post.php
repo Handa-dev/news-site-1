@@ -37,7 +37,7 @@ session_start();
             $author = $_SESSION["user_id"];
             $sql = "INSERT INTO  post(title,description,category,post_date,author,post_img) 
                         VALUES ('{$title}','{$description}',{$category},'{$date}',{$author},'{$file_name}');";
-            $sql .= "UPDATE category  SET post = post + 1 WHERE category_id = {$category}";
+            $sql .= "UPDATE category  SET post = post + 1 WHERE category_id = {$category}";         //number of posts per category are getting incremented here
             if(mysqli_multi_query($conn,$sql))
             {
                 header("location:{$hostname}/admin/post.php");

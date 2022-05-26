@@ -19,7 +19,7 @@
                        
                         $offset = ($page - 1) * $limit; 
                          
-                       $sql = "SELECT post.post_id, post.title, post.description,post.post_date,post.author, category.category_name,user.username,post.category,post.post_img FROM post LEFT JOIN category ON post.category =category.category_id LEFT JOIN user ON post.author = user.user_id ORDER BY post.post_id DESC LIMIT 0,3";
+                       $sql = "SELECT post.post_id, post.title, post.description,post.post_date,post.author, category.category_name,user.username,post.category,post.post_img FROM post LEFT JOIN category ON post.category =category.category_id LEFT JOIN user ON post.author = user.user_id ORDER BY post.post_id DESC LIMIT {$offset},{$limit}";                       ;
                         
                         //echo "<br>hi2";
                        // exit;
@@ -29,19 +29,21 @@
                             while($row = mysqli_fetch_assoc($result))
                             {
                            
-                        
+                       
                         ?>
                         <div class="post-content">
                             <div class="row">
                                 <div class="col-md-4">
                                     <a class="post-img" href="single.php?id=<?php echo $row['post_id'] ?>"><img src="admin/upload/<?php echo $row['post_img'] ?>" alt=""/></a>
                                 </div>  <!---single.php use echo $row['post_id']post and read more option id show in url bar-->
+                             
                                <div class="col-md-8">
                                     <div class="inner-content clearfix">
                                         <h3><a href='single.php?id=<?php echo $row["post_id"] ?>'><?php echo $row['title'] ?></a></h3>
                                         <div class="post-information">
                                             <span>
                                                 <i class="fa fa-tags" aria-hidden="true"></i>
+
                                                 <a href='category.php?cid=<?php echo $row['category']?>'><?php echo $row['category_name'] ?></a>
                                             </span> <!---cid pas in line 44 click on home category page opn user click on which category type-->
                                             <span>
